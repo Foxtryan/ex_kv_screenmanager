@@ -1,0 +1,71 @@
+# Importa a transição a ser utilizada
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+# Referencia as telas com as classes
+MyScreenManager:
+	transition: SlideTransition(direction="right")
+	id: screen_manager
+
+	TelaPrincipal:
+		id: tela_principal
+		name: 'tela_principal'
+		manager: screen_manager
+	Menu:
+		id: tela_menu
+		name: 'menu'
+		manager: screen_manager
+
+<Menu>:
+	StackLayout:
+		orientation:"tb-lr"
+		Button:
+			text:"Calcular Disjuntores"
+			size_hint:.3,.2
+			background_color:(0,1.,0.1,.9)
+		Button:
+			text:"Calcular expessura\ndos fios"
+			size_hint:.3,.2
+			background_color:(0,1.,0.1,.9)
+     
+		Button:
+			text:"Contato"
+			size_hint:.3,.2
+			background_color:(0,1.,0.1,.9)
+     
+		Button:
+			text:"Configurações"
+			size_hint:.3,.2
+			background_color:(0,1.,0.1,.9)
+     
+		Button:
+			text:"Disjuntores&Cia"
+			size_hint:.3,.2
+			background_color:(0,1.,0.1,.9)
+     
+	FloatLayout:
+		Button:
+			on_press:root.fechar_menu()
+			text:"X"
+			color:1,0,0,1
+			size_hint:.05,.05
+			pos_hint:{"top":1.,"right":.045}
+			
+		Image:
+			source: "python.png"
+			size_hint: .5, .75
+			pos_hint: {"center_x": .65, "center_y": .5}
+			
+<TelaPrincipal>:
+	BoxLayout:
+		orientation: "vertical"
+		Image:
+			source: "python.png"
+			size_hint: .5,.75
+			pos_hint:{"center_x":.5 , "top":1.1}
+		Button:
+			on_press:root.clique_iniciar()
+			text:"Iniciar no Aplicativo"
+			color:0,1.,0,1
+			size_hint:.33, .2
+			background_color:(0,0,1,1.)
+			pos_hint:{"center_x":.5,"y":.25}
